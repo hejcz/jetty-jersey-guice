@@ -19,7 +19,7 @@ public class Config extends ResourceConfig {
     public Config(ServiceLocator serviceLocator) {
         super();
         register(SimpleEndpoint.class);
-        register(FieldMaskValueParamProvider.class);
+        register(new FieldMaskBinder());
         setupHK2GuiceBridge(serviceLocator);
     }
 

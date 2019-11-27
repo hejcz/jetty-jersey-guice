@@ -2,6 +2,7 @@ package com.github.hejcz;
 
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.ws.rs.BeanParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -24,16 +25,10 @@ public class SimpleEndpoint {
         return "Hello";
     }
 
-    /**
-     * Presence of any annotation makes this parameter's source UNKNOWN so FieldMaskValueParamProvider
-     * might be used. If no annotation is present ENTITY source is assumed.
-     * 
-     * @see org.glassfish.jersey.model.Parameter.Source
-     * @see com.github.hejcz.FieldMaskValueParamProvider
-     */
     @POST
-    public void addCustomParam(FieldMask mask) {
-        System.out.println(mask);
+    public void addCustomParam(HelloDto dto, @BeanParam FieldMask mask) {
+        System.out.println(dto.getName());
+        System.out.println(mask.has("name"));
     }
 
 }

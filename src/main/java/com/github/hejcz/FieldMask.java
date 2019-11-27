@@ -1,4 +1,7 @@
 package com.github.hejcz;
 
-class FieldMask {
+interface FieldMask {
+
+    boolean has(String name);
+
 }
