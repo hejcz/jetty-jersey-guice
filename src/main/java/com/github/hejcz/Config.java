@@ -19,7 +19,8 @@ public class Config extends ResourceConfig {
     public Config(ServiceLocator serviceLocator) {
         super();
         register(SimpleEndpoint.class);
-        register(new FieldMaskBinder());
+        register(new FieldMaskHolderBinder());
+        register(MyJsonDeserializer.class);
         setupHK2GuiceBridge(serviceLocator);
     }
 

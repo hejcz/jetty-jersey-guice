@@ -1,6 +1,6 @@
 package com.github.hejcz;
 
-interface FieldMask {
+public interface FieldMask {
 
     boolean has(String name);
 

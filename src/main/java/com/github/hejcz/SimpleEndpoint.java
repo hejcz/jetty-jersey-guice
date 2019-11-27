@@ -2,10 +2,10 @@ package com.github.hejcz;
 
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.ws.rs.BeanParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.core.Context;
 
 @Path("hello")
 public class SimpleEndpoint {
@@ -26,9 +26,9 @@ public class SimpleEndpoint {
     }
 
     @POST
-    public void addCustomParam(HelloDto dto, @BeanParam FieldMask mask) {
+    public void addCustomParam(HelloDto dto, @Context FieldMaskHolder mask) {
         System.out.println(dto.getName());
-        System.out.println(mask.has("name"));
+        System.out.println(mask.get().has("name"));
     }
 
 }
