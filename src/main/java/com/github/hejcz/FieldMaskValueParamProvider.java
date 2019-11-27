@@ -4,14 +4,15 @@ import java.util.function.Function;
 
 import javax.inject.Inject;
 import javax.inject.Provider;
-import javax.inject.Singleton;
 
 import org.glassfish.jersey.server.ContainerRequest;
 import org.glassfish.jersey.server.internal.inject.AbstractValueParamProvider;
 import org.glassfish.jersey.server.internal.inject.MultivaluedParameterExtractorProvider;
 import org.glassfish.jersey.server.model.Parameter;
 
-@Singleton
+/**
+ * To be auto-discovered it MUST BE PUBLIC and implement {@link javax.ws.rs.ext.Provider}.
+ */
 class FieldMaskValueParamProvider extends AbstractValueParamProvider {
     @Inject
     public FieldMaskValueParamProvider(Provider<MultivaluedParameterExtractorProvider> mpep) {

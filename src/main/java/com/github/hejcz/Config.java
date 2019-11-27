@@ -18,7 +18,7 @@ public class Config extends ResourceConfig {
     @Inject
     public Config(ServiceLocator serviceLocator) {
         super();
-        packages("com.github.hejcz");
+        register(SimpleEndpoint.class);
         register(FieldMaskValueParamProvider.class);
         setupHK2GuiceBridge(serviceLocator);
     }
