@@ -15,7 +15,7 @@ import org.glassfish.jersey.server.model.Parameter;
 class FieldMaskValueParamProvider extends AbstractValueParamProvider {
     @Inject
     public FieldMaskValueParamProvider(Provider<MultivaluedParameterExtractorProvider> mpep) {
-        super(mpep, org.glassfish.jersey.model.Parameter.Source.UNKNOWN);
+        super(mpep, org.glassfish.jersey.model.Parameter.Source.ENTITY);
     }
 
     @Override
@@ -24,5 +24,13 @@ class FieldMaskValueParamProvider extends AbstractValueParamProvider {
             return null;
         }
         return req -> new FieldMask();
+    }
+
+    /**
+     * Must be executed before default entity param provider.
+     */
+    @Override
+    public PriorityType getPriority() {
+        return Priority.HIGH;
     }
 }

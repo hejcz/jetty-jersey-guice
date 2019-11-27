@@ -32,7 +32,7 @@ public class SimpleEndpoint {
      * @see com.github.hejcz.FieldMaskValueParamProvider
      */
     @POST
-    public void addCustomParam(@Mask FieldMask mask) {
+    public void addCustomParam(FieldMask mask) {
         System.out.println(mask);
     }
 
