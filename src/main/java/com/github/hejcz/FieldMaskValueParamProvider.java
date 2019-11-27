@@ -1,0 +1,28 @@
+package com.github.hejcz;
+
+import java.util.function.Function;
+
+import javax.inject.Inject;
+import javax.inject.Provider;
+import javax.inject.Singleton;
+
+import org.glassfish.jersey.server.ContainerRequest;
+import org.glassfish.jersey.server.internal.inject.AbstractValueParamProvider;
+import org.glassfish.jersey.server.internal.inject.MultivaluedParameterExtractorProvider;
+import org.glassfish.jersey.server.model.Parameter;
+
+@Singleton
+class FieldMaskValueParamProvider extends AbstractValueParamProvider {
+    @Inject
+    public FieldMaskValueParamProvider(Provider<MultivaluedParameterExtractorProvider> mpep) {
+        super(mpep, org.glassfish.jersey.model.Parameter.Source.UNKNOWN);
+    }
+
+    @Override
+    protected Function<ContainerRequest, ?> createValueProvider(Parameter parameter) {
+        if (!parameter.getRawType().equals(FieldMask.class)) {
+            return null;
+        }
+        return req -> new FieldMask();
+    }
+}
